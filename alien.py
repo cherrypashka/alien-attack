@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
-class Alien():
+class Alien(Sprite):
     #class present one alien
     def __init__(self, ai_settings, screen):
 
