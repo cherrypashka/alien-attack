@@ -65,13 +65,13 @@ def get_number_aliens_x(ai_settings, alien_width):
     #create aliens fleet
     #create alien and calculating numbers of aliens in the range
     #interval between neighboring aliens = 1 width of alien
-    available_space_x = ai_settings.screen_width - 2 * alien_width
-    number_aliens_x  = int(available_space_x / (2 * alien_width))
+    available_space_x = ai_settings.screen_width - alien_width
+    number_aliens_x  = int(available_space_x / (2 * alien_width)) - 1
     return number_aliens_x
 
 def get_number_rows(ai_settings, ship_height, alien_height):
-    available_space_y = (ai_settings.screen_height - 50 - ship_height)
-    number_rows = int(available_space_y / (alien_height + 40))
+    available_space_y = (ai_settings.screen_height - 40 - ship_height)
+    number_rows = int(available_space_y / (alien_height + 60))
     # number_rows = int(available_space_y / (2 * alien_height ))
     return number_rows
 
@@ -79,9 +79,9 @@ def get_number_rows(ai_settings, ship_height, alien_height):
 def create_alien(ai_settings, screen, aliens, alien_number, row_number):
     alien = Alien(ai_settings, screen)
     alien_width = alien.rect.width / 2
-    alien.x = alien_width + 2 * alien_width * alien_number
-    alien.rect.x = alien.x
-    alien.rect.y = 40 + (alien.rect.height + 30) * row_number
+    alien.x = 2.5 * alien_width * alien_number
+    alien.rect.x = alien.x 
+    alien.rect.y = 10 + (alien.rect.height + 30) * row_number
     aliens.add(alien)
 
 def create_fleet(ai_settings, screen, ship, aliens):
