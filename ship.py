@@ -32,3 +32,7 @@ class Ship():
     def blitme(self):
         #draw ship in count position
         self.screen.blit(self.image, self.rect)
+
+    def center_ship(self):
+
+        self.center = self.screen_rect.centerx

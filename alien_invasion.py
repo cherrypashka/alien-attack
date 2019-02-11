@@ -1,4 +1,3 @@
-
 import pygame
 
 from setting import Settings
@@ -13,6 +12,8 @@ from pygame.sprite import Group
 
 from alien import Alien
 
+from game_stats import GameStats 
+
 
 def run_game():
     #init game and create window objects"
@@ -23,6 +24,11 @@ def run_game():
         (ai_settings.screen_width, ai_settings.screen_height)
     )
     pygame.display.set_caption("Alien invasion")
+    
+    #create instance for storage game statistics
+
+    stats = GameStats(ai_settings)
+
     #creating a ship
     ship = Ship(ai_settings, screen)
     #create droup for bullet storage
@@ -34,8 +40,10 @@ def run_game():
 
     while True:
         gf.check_events(ai_settings, screen, ship, bullets)
-        ship.update()
-        gf.update_bullets(bullets)
+        if stats.game_active:
+            ship.update()
+            gf.update_bullets(ai_settings, screen, ship,  aliens, bullets)
+            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
         gf.update_screen(
             ai_background, ai_settings, screen, ship, aliens, bullets)
         
