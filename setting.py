@@ -17,7 +17,7 @@ class Settings():
         self.fleet_drop_speed = 10
 
         #fleet direction = 1 means move to the right and -1 move to the left
-        self.fleet_direction = 10
+        self.fleet_direction = 1
 
 
         #bullet parametrs
